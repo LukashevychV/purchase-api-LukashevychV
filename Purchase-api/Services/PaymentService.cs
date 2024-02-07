@@ -6,7 +6,7 @@ namespace PurchaseApi.Services
     {
         public bool Charge(decimal total, Card card)
         {
-            if (card.ValidTo > DateTime.Now) 
+            if (card.ValidTo < DateTime.Now) 
             {
                 return false;
             }

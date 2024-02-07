@@ -23,8 +23,12 @@ namespace PurchaseApi.Controllers
         [Route("/Checkout")]
         public string ConductCheckout(Cart cart)
         {
-            if (_cartService.Charge(_cartService.TotalSum(cart.items), cart.card))
+            decimal totalsum = _cartService.TotalSum(cart.items);
+            bool paymentSuccessful = _paymentService.Charge(totalsum, cart.card);
+
+            if (paymentSuccessful)
             {
+                
                 return _shipmentService.Ship(cart.addressInfo, cart.items);
             }
             else

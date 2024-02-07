@@ -10,9 +10,9 @@ namespace PurchaseApi.Services
             _cartService = cartService;
         }
 
-        string IShipmentService.Ship(AddressInfo info, IEnumerable<CartItem> items)
+        public string Ship(AddressInfo info, IEnumerable<CartItem> items)
         {
-            return $"{info.City} on total sum {_cartService.TotalSum(items)}";
+            return $"Shipped {_cartService.TotalQuantity(items)} items to  {info.City} on total sum {_cartService.TotalSum(items)}$";
         }
     }
 }

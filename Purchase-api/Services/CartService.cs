@@ -10,7 +10,7 @@ namespace PurchaseApi.Services
 
             foreach (var item in items)
             {
-                sum += item.Price;
+                sum += item.Price*item.Quantity;
             }
 
             return sum;
@@ -28,9 +28,13 @@ namespace PurchaseApi.Services
             return totalQuantity;
         }
 
-        public bool Charge(decimal totalPrice, Card card)
+        public bool Charge(decimal total, Card card)
         {
-            throw new NotImplementedException();
+            if (card.ValidTo > DateTime.Now)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }
