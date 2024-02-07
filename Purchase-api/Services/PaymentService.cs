@@ -4,7 +4,7 @@ namespace PurchaseApi.Services
 {
     public class PaymentService : IPaymentService
     {
-        bool IPaymentService.Charge(decimal total, Card card)
+        public bool Charge(decimal total, Card card)
         {
             if (card.ValidTo > DateTime.Now) 
             {
