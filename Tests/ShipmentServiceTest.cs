@@ -22,10 +22,10 @@ namespace Tests
         public static IEnumerable<object[]> GetTestData()
         {
             AddressInfo addressInfo1 = new("Shevchenka", "149", "Lviv", "12345", "344344");
-            yield return new object[] { addressInfo1, 1000.05m, 2, "Shipped 2 items to  Lviv on total sum 1000,05$" };
+            yield return new object[] { addressInfo1, 1000.05m, 2, "Shipped 2 items to  Lviv on total sum 1000.05$" };
 
             AddressInfo addressInfo2 = new("Shevchenka", "149", "Chernivtsi", "12345", "344344");
-            yield return new object[] { addressInfo2, 2000.50m, 5, "Shipped 5 items to  Chernivtsi on total sum 2000,50$" };
+            yield return new object[] { addressInfo2, 2000.50m, 5, "Shipped 5 items to  Chernivtsi on total sum 2000.50$" };
         }
     }
 }
