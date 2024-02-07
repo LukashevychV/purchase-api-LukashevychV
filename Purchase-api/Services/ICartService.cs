@@ -2,7 +2,7 @@
 
 namespace PurchaseApi.Services
 {
-    public interface ICartService
+    public interface ICartService : IPaymentService
     {
         decimal TotalSum(IEnumerable<CartItem> items);
         int TotalQuantity(IEnumerable<CartItem> items);

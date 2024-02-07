@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using PurchaseApi.Services;
 
 namespace PurchaseApi.Controllers
 {
@@ -6,34 +7,41 @@ namespace PurchaseApi.Controllers
     [Route("[controller]")]
     public class ProductsController : ControllerBase
     {
+        private readonly IDataProviderService _providerService;
+
+        public ProductsController(IDataProviderService providerService)
+        {
+            _providerService = providerService;
+        }
+
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            // your code here
+             return _providerService.GetProducts();
         }
 
         [HttpGet("{index}")]
         public string Get(int index)
         {
-            // your code here
+            return _providerService.GetProduct(index);
         }
 
         [HttpPost]
         public string Create([FromBody] string name)
         {
-            // your code here
+            return _providerService.CreateProduct(name);
         }
 
         [HttpPut("{index}")]
         public string Update(int index, string name)
         {
-            // your code here
+            return _providerService.UpdateProduct(index, name);
         }
 
         [HttpDelete("{index}")]
         public void Delete(int index)
         {
-            // your code here
+            _providerService?.DeleteProduct(index);
         }
     }
 }
